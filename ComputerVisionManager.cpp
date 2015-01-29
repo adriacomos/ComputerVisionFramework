@@ -23,9 +23,9 @@ void ComputerVisionManager::startVideoProcessor()
 }
 
 
-void ComputerVisionManager::setFrameProcessorCtrl( FrameProcessorCtrl^ frm )
+void ComputerVisionManager::setFrameProcessorCtrl( IFrameProcessorCtrl^ frm )
 {
-
+	mptrcvManager->setFrameProcessorCtrl( frm->ToUnmanaged()); 
 }
 
 

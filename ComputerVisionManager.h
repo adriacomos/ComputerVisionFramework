@@ -4,6 +4,7 @@
 #include "IVideoProcessor.h"
 
 #include "ComputerVisionFrameworkNative.h"
+#include "IFrameProcessorCtrl.h"
 
 using namespace System::Collections::Generic;
 
@@ -27,7 +28,7 @@ namespace cvfn {
 		virtual void startVideoProcessor(); 
 		virtual void stopVideoProcessor();
 
-		void setFrameProcessorCtrl( FrameProcessorCtrl^ frm );
+		void setFrameProcessorCtrl( IFrameProcessorCtrl^ frm );
 
 
 		virtual Point2D^ getTrackingPoint();
