@@ -3,9 +3,9 @@
 namespace cvfn
 {
 
-interface class IFrameProcessorCtrl
-{
-public:
-};
+	public interface class IFrameProcessorCtrl
+	{
+	public:
+	};
 
 }

@@ -3,16 +3,17 @@
 
 namespace cvf
 {
-	class SingleFeatureTrackerCtrl;
 	class IFrameProcessorCtrl;
 };
 
 namespace cvfn {
 
+
+
 ref class SingleFeatureTrackerCtrl : public IFrameProcessorCtrl
 {
 
-	cvf::SingleFeatureTrackerCtrl *mptrUnmanaged;
+	cvf::IFrameProcessorCtrl *mptrUnmanaged;
 
 public:
 	SingleFeatureTrackerCtrl(void);
