@@ -46,7 +46,7 @@ void ComputerVisionManager::startVideoProcessorFromDevice( int device )
 
 void ComputerVisionManager::setSingleFeatureTrackCtrl( )
 {
-	mptrcvManager->setFrameProcessorCtrl( FeatureTrackerFactory::createSingleFeatureFactory() );
+	mptrcvManager->setFrameProcessorCtrl( FeatureTrackerFactory::createSingleFeatureFactory( ProcessorTechnology::CPU ) );
 }
 
 void ComputerVisionManager::getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor )

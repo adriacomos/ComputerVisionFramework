@@ -29,8 +29,6 @@ void SingleFeatureTrackerCtrl::setUnmanaged( std::weak_ptr<cvf::IFrameProcessorC
 
 
 
-
-
 Point2D^ SingleFeatureTrackerCtrl::getTrackingPoint() 
 {
 	std::shared_ptr<cvf::ISingleFeatureTrackerCtrl> sft = mptrUnmanaged->lock();
