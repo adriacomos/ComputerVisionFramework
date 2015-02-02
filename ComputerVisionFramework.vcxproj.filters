@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Interfaces">
-      <UniqueIdentifier>{bdf54c10-9dca-4777-9c72-0eae152b4061}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UserInterfaces">
       <UniqueIdentifier>{44cd93da-814f-48b1-89e7-d92b978e002e}</UniqueIdentifier>
     </Filter>
@@ -36,23 +33,11 @@
     <ClInclude Include="Point2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IFrameProcessor.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="IComputerVisionManager.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="IFeatureTracker.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="Rect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Size2D.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IVideoProcessor.h">
-      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="UIAnchorOnClick.h">
       <Filter>UserInterfaces</Filter>
@@ -68,6 +53,18 @@
     </ClInclude>
     <ClInclude Include="SingleFeatureTrackerCtrl.h">
       <Filter>FrameProcessorControllers</Filter>
+    </ClInclude>
+    <ClInclude Include="IComputerVisionManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IVideoProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IFrameProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IFeatureTracker.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

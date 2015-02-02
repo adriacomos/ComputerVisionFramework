@@ -11,36 +11,28 @@ using namespace System::Collections::Generic;
 namespace cvfn {
 
 	ref class Point2D;
+	interface class IFrameProcessorCtrl;
 	interface class IVideoProcessor;
 
 
 	public ref class ComputerVisionManager : public IComputerVisionManager
 	{
-		//Dictionary< System::String^, IFrameProcessor^>^  mList;
-
 		cvf::IComputerVisionManager  *mptrcvManager;
-		//IVideoProcessor ^mVideoProcessor;
 
 	public:
 		ComputerVisionManager(void);
 		virtual ~ComputerVisionManager(void);
 
-		virtual void startVideoProcessor(); 
+		virtual void startVideoProcessorFromFile( System::String^ filename );
+		virtual void startVideoProcessorFromDevice( int device );
+
 		virtual void stopVideoProcessor();
 
-		void setFrameProcessorCtrl( IFrameProcessorCtrl^ frm );
+		virtual void setSingleFeatureTrackCtrl( );
+		virtual void getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor );
 
 
-		virtual Point2D^ getTrackingPoint();
-		virtual Point2D^ getSecondaryAttachedPoint();
-		virtual bool	getTrackingPoint( Point2D% pt );
-		virtual bool	getSecondaryAttachedPoint( Point2D% pt );
 
-
-		/*
-		virtual void setFrameProcessor(IFrameProcessor^ frameProcessor);
-		virtual IVideoProcessor^  getVideoProcessor();
-		*/
 
 	};
 }

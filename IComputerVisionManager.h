@@ -5,24 +5,21 @@
 
 namespace cvfn {
 
-	interface class IVideoProcessor;
+	interface class IFrameProcessorCtrl;
 
 	public interface class IComputerVisionManager
 	{
 	public:
 
-		void startVideoProcessor();
+		void startVideoProcessorFromFile( System::String^ filename );
+		void startVideoProcessorFromDevice( int device );
+
 		void stopVideoProcessor();
 
-		Point2D^ getTrackingPoint();
-		Point2D^ getSecondaryAttachedPoint();
-		bool	getTrackingPoint( Point2D% pt );
-		bool	getSecondaryAttachedPoint( Point2D% pt );
+		void setSingleFeatureTrackCtrl( );
+		void getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor );
 
 
-		//void setFrameProcessor(IFrameProcessor^ frameProcessor);
-
-		//IVideoProcessor^ getVideoProcessor();
 	};
 
 }
