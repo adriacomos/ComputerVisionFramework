@@ -44,9 +44,25 @@ void ComputerVisionManager::startVideoProcessorFromDevice( int device )
 }
 
 
-void ComputerVisionManager::setSingleFeatureTrackCtrl( )
+void ComputerVisionManager::setSingleFeatureTrackCtrl( ProcessorTechnology prTech,
+			Rect^ areaTracking,
+			unsigned int minPoints,
+			bool activateSBD,
+			double thresholdSBD )
 {
-	mptrcvManager->setFrameProcessorCtrl( FeatureTrackerFactory::createSingleFeatureFactory( ProcessorTechnology::CPU ) );
+
+	cv::Rect area( areaTracking->X, areaTracking->Y, areaTracking->Width, areaTracking->Height );
+
+	cvf::ProcessorTechnology pt;
+	switch (prTech) {
+	case ProcessorTechnology::CPU:
+		pt = cvf::ProcessorTechnology::CPU; break;
+	case ProcessorTechnology::GPU:
+		pt = cvf::ProcessorTechnology::GPU; break;
+	};
+		
+	mptrcvManager->setFrameProcessorCtrl( FeatureTrackerFactory::createSingleFeatureFactory( pt,
+		area, minPoints, activateSBD, thresholdSBD ) );
 }
 
 void ComputerVisionManager::getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor )

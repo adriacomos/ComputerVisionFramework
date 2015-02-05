@@ -99,15 +99,11 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="ComputerVisionManager.cpp" />
-    <ClCompile Include="IFrameProcessor.cpp" />
-    <ClCompile Include="IVideoProcessor.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="SingleFeatureTrackerCtrl.cpp" />
     <ClCompile Include="Size2D.cpp" />
     <ClCompile Include="SURFFeatureTracker.cpp" />
-    <ClCompile Include="IComputerVisionManager.cpp" />
-    <ClCompile Include="IFeatureTracker.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

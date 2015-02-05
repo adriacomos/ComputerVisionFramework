@@ -2,10 +2,17 @@
 
 #include "IFeatureTracker.h"
 #include "Point2D.h"
+#include "Rect.h"
 
 namespace cvfn {
 
 	interface class IFrameProcessorCtrl;
+
+	public enum class ProcessorTechnology {
+		CPU,
+		GPU
+	};
+
 
 	public interface class IComputerVisionManager
 	{
@@ -16,7 +23,11 @@ namespace cvfn {
 
 		void stopVideoProcessor();
 
-		void setSingleFeatureTrackCtrl( );
+		void setSingleFeatureTrackCtrl( ProcessorTechnology prTch,
+										Rect^ areaTracking,
+										unsigned int minPoints,
+										bool activateSBD,
+										double thresholdSBD );
 		void getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor );
 
 

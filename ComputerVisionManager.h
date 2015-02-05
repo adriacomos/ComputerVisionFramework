@@ -15,6 +15,7 @@ namespace cvfn {
 	interface class IVideoProcessor;
 
 
+
 	public ref class ComputerVisionManager : public IComputerVisionManager
 	{
 		cvf::IComputerVisionManager  *mptrcvManager;
@@ -28,7 +29,12 @@ namespace cvfn {
 
 		virtual void stopVideoProcessor();
 
-		virtual void setSingleFeatureTrackCtrl( );
+		virtual void setSingleFeatureTrackCtrl( ProcessorTechnology prTch,
+			Rect^ areaTracking,
+			unsigned int minPoints,
+			bool activateSBD,
+			double thresholdSBD );
+
 		virtual void getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor );
 
 
