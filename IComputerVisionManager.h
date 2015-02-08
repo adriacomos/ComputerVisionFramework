@@ -30,6 +30,9 @@ namespace cvfn {
 										double thresholdSBD );
 		void getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor );
 
+		long getPotentialFrameRate();
+		double getAverageFrameTime();
+
 
 	};
 

@@ -78,5 +78,17 @@ void ComputerVisionManager::stopVideoProcessor()
 }
 
 
+long ComputerVisionManager::getPotentialFrameRate()
+{
+	return mptrcvManager->getPotentialFrameRate();
+}
+
+double ComputerVisionManager::getAverageFrameTime()
+{
+	return mptrcvManager->getAverageFrameTime();
+}
+
+
+
 
 };

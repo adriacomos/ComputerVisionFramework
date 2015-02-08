@@ -37,6 +37,10 @@ namespace cvfn {
 
 		virtual void getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor );
 
+		virtual	long getPotentialFrameRate();
+		virtual	double getAverageFrameTime();
+
+
 
 
 
