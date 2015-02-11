@@ -6,6 +6,8 @@
 #include "ComputerVisionFrameworkNative.h"
 #include "IFrameProcessorCtrl.h"
 
+#include "Size2D.h"
+
 using namespace System::Collections::Generic;
 
 namespace cvfn {
@@ -24,8 +26,8 @@ namespace cvfn {
 		ComputerVisionManager(void);
 		virtual ~ComputerVisionManager(void);
 
-		virtual void startVideoProcessorFromFile( System::String^ filename );
-		virtual void startVideoProcessorFromDevice( int device );
+		virtual void startVideoProcessorFromFile( System::String^ filename, bool resizeFrame, Size2D^ resizeFrameSize  );
+		virtual void startVideoProcessorFromDevice( int device, bool resizeFrame, Size2D^ resizeFrameSize   );
 
 		virtual void stopVideoProcessor();
 
@@ -39,7 +41,8 @@ namespace cvfn {
 
 		virtual	long getPotentialFrameRate();
 		virtual	double getAverageFrameTime();
-
+		virtual double getRelativeVideoProgression();  // sólo para reproducción desde ficheros
+		virtual void setRelativeVideoProgression( double relpos );
 
 
 

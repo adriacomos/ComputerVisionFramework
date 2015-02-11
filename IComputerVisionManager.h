@@ -3,10 +3,13 @@
 #include "IFeatureTracker.h"
 #include "Point2D.h"
 #include "Rect.h"
+#include "Size2D.h"
 
 namespace cvfn {
 
 	interface class IFrameProcessorCtrl;
+
+
 
 	public enum class ProcessorTechnology {
 		CPU,
@@ -18,8 +21,8 @@ namespace cvfn {
 	{
 	public:
 
-		void startVideoProcessorFromFile( System::String^ filename );
-		void startVideoProcessorFromDevice( int device );
+		void startVideoProcessorFromFile( System::String^ filename, bool resizeFrame, Size2D^ resizeFrameSize   );
+		void startVideoProcessorFromDevice( int device, bool resizeFrame, Size2D^ resizeFrameSize   );
 
 		void stopVideoProcessor();
 
@@ -32,6 +35,8 @@ namespace cvfn {
 
 		long getPotentialFrameRate();
 		double getAverageFrameTime();
+		double getRelativeVideoProgression();  // sólo para reproducción desde ficheros
+		void setRelativeVideoProgression( double relpos );// sólo para reproducción desde ficheros
 
 
 	};

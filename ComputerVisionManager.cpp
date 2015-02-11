@@ -29,18 +29,29 @@ ComputerVisionManager::~ComputerVisionManager(void)
 
 
 //-------------------------------------------------------------------------------------------------
-void ComputerVisionManager::startVideoProcessorFromFile( System::String^ filename ) 
+void ComputerVisionManager::startVideoProcessorFromFile( System::String^ filename, bool resizeFrame, Size2D^ resizeFrameSize    ) 
 {
 	IntPtr ptrToNativeString = Marshal::StringToHGlobalAnsi(filename);
 	char* outputDisplayNative = static_cast<char*>(ptrToNativeString.ToPointer());
 
-	mptrcvManager->startVideoProcessorFromFile( outputDisplayNative );
+	cv::Size size(0,0);
+	if (resizeFrame)
+	{
+		size = cv::Size( resizeFrameSize->Width, resizeFrameSize->Height );
+	}
+
+	mptrcvManager->startVideoProcessorFromFile( outputDisplayNative, resizeFrame, size );
 }
 
 //-------------------------------------------------------------------------------------------------
-void ComputerVisionManager::startVideoProcessorFromDevice( int device ) 
+void ComputerVisionManager::startVideoProcessorFromDevice( int device, bool resizeFrame, Size2D^ resizeFrameSize   ) 
 {
-	mptrcvManager->startVideoProcessorFromDevice( device );
+	cv::Size size(0,0);
+	if (resizeFrame)
+	{
+		size = cv::Size( resizeFrameSize->Width, resizeFrameSize->Height );
+	}
+	mptrcvManager->startVideoProcessorFromDevice( device, resizeFrame, size  );
 }
 
 
@@ -88,7 +99,14 @@ double ComputerVisionManager::getAverageFrameTime()
 	return mptrcvManager->getAverageFrameTime();
 }
 
+double ComputerVisionManager::getRelativeVideoProgression()  // sólo para reproducción desde ficheros
+{
+	return mptrcvManager->getRelativeVideoProgression();
+}
 
-
+void ComputerVisionManager::setRelativeVideoProgression( double relpos )
+{
+	mptrcvManager->setRelativeVideoProgression( relpos );
+}
 
 };
