@@ -39,6 +39,8 @@ namespace cvfn {
 		void setRelativeVideoProgression( double relpos );// sólo para reproducción desde ficheros
 
 
+		System::Collections::Generic::Dictionary< System::String^, System::String^>^ getDebugInfo();
+
 	};
 
 }

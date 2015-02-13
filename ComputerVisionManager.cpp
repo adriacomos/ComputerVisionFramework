@@ -10,10 +10,14 @@
 #include "IFrameProcessorCtrl.h"
 
 #include <memory>
+#include <map>
+#include <string>
 
 using namespace cvf;
 using namespace System;
+using namespace System::Collections::Generic;
 using namespace System::Runtime::InteropServices;
+using namespace std;
 
 namespace cvfn {
 
@@ -108,5 +112,25 @@ void ComputerVisionManager::setRelativeVideoProgression( double relpos )
 {
 	mptrcvManager->setRelativeVideoProgression( relpos );
 }
+
+Dictionary< String^, String^>^ ComputerVisionManager::getDebugInfo() 
+{
+	Dictionary< String^, String^>^ ret = gcnew Dictionary< String^, String^ >();
+
+	map<string,string> debugInfo = mptrcvManager->getDebugInfo();
+
+	for (auto kv : debugInfo)
+	{
+		System::String^ name = gcnew System::String( kv.first.c_str());
+		System::String^ value = gcnew System::String( kv.second.c_str());
+
+		ret->Add( name, value );
+
+	}
+
+	return ret;
+
+}
+
 
 };
