@@ -76,7 +76,7 @@ void ComputerVisionManager::setSingleFeatureTrackCtrl( ProcessorTechnology prTec
 		pt = cvf::ProcessorTechnology::GPU; break;
 	};
 		
-	mptrcvManager->setFrameProcessorCtrl( FeatureTrackerFactory::createSingleFeatureFactory( pt,
+	mptrcvManager->setFrameProcessorCtrl( FeatureTrackerFactory::createSingleFeatureTracker( pt,
 		area, minPoints, activateSBD, thresholdSBD ) );
 }
 
