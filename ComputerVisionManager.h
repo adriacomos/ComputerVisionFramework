@@ -4,7 +4,7 @@
 #include "IVideoProcessor.h"
 
 #include "ComputerVisionFrameworkNative.h"
-#include "IFrameProcessorCtrl.h"
+
 
 #include "Size2D.h"
 
@@ -13,7 +13,6 @@ using namespace System::Collections::Generic;
 namespace cvfn {
 
 	ref class Point2D;
-	interface class IFrameProcessorCtrl;
 	interface class IVideoProcessor;
 
 
@@ -27,17 +26,17 @@ namespace cvfn {
 		virtual ~ComputerVisionManager(void);
 
 		virtual void startVideoProcessorFromFile( System::String^ filename, bool resizeFrame, Size2D^ resizeFrameSize  );
-		virtual void startVideoProcessorFromDevice( int device, bool resizeFrame, Size2D^ resizeFrameSize   );
+		virtual void startVideoProcessorFromDevice( int device, Size2D^ captureSize, double frameRate, bool resizeFrame, Size2D^ resizeFrameSize   );
 
 		virtual void stopVideoProcessor();
 
-		virtual void setSingleFeatureTrackCtrl( ProcessorTechnology prTch,
+		virtual void setSingleFeatureTracker( ProcessorTechnology prTch,
 			Rect^ areaTracking,
 			unsigned int minPoints,
 			bool activateSBD,
 			double thresholdSBD );
 
-		virtual void getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor );
+		virtual void getFrameProcessor( IFrameProcessor^ frameProcessor );
 
 		virtual	long getPotentialFrameRate();
 		virtual	double getAverageFrameTime();

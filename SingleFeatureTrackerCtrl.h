@@ -1,12 +1,12 @@
 #pragma once
 
-#include "iframeprocessorctrl.h"
+#include "iframeprocessor.h"
 #include <memory>
 #include "Point2D.h"
 
 namespace cvf
 {
-	class IFrameProcessorCtrl;
+	class IFrameProcessor;
 	class ISingleFeatureTrackerCtrl;
 };
 
@@ -14,7 +14,7 @@ namespace cvfn {
 
 
 
-public ref class SingleFeatureTrackerCtrl : public IFrameProcessorCtrl
+public ref class SingleFeatureTrackerCtrl : public IFrameProcessor
 {
 
 	std::weak_ptr<cvf::ISingleFeatureTrackerCtrl> *mptrUnmanaged;
@@ -23,7 +23,7 @@ public:
 	SingleFeatureTrackerCtrl(void);
 	virtual ~SingleFeatureTrackerCtrl(void);
 
-	virtual void setUnmanaged( std::weak_ptr<cvf::IFrameProcessorCtrl> frm );
+	virtual void setUnmanaged( std::weak_ptr<cvf::IFrameProcessor> frm );
 
 	virtual Point2D^ getTrackingPoint();
 	virtual Point2D^ getSecondaryAttachedPoint();

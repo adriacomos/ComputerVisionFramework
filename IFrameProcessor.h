@@ -9,7 +9,9 @@ namespace cvfn {
 	public interface class IFrameProcessor
 	{
 	public:
-		cvf::IFrameProcessor *ToUnmanaged();
+		//cvf::IFrameProcessor *ToUnmanaged();
+		void setUnmanaged( std::weak_ptr<cvf::IFrameProcessor> frm );
+
 	};
 	
 };

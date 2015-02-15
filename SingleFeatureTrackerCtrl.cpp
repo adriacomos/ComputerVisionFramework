@@ -19,9 +19,9 @@ SingleFeatureTrackerCtrl::~SingleFeatureTrackerCtrl(void)
 }
 
 
-void SingleFeatureTrackerCtrl::setUnmanaged( std::weak_ptr<cvf::IFrameProcessorCtrl> frm )
+void SingleFeatureTrackerCtrl::setUnmanaged( std::weak_ptr<cvf::IFrameProcessor> frm )
 {
-	std::shared_ptr<cvf::IFrameProcessorCtrl> ptrFrm = frm.lock();
+	std::shared_ptr<cvf::IFrameProcessor> ptrFrm = frm.lock();
 	std::shared_ptr<cvf::ISingleFeatureTrackerCtrl> ptrConcrete = dynamic_pointer_cast<cvf::ISingleFeatureTrackerCtrl>(ptrFrm);
 	*mptrUnmanaged = std::weak_ptr<cvf::ISingleFeatureTrackerCtrl>(ptrConcrete);
 }

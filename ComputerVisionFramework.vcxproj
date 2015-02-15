@@ -143,7 +143,6 @@
   <ItemGroup>
     <ClInclude Include="ComputerVisionManager.h" />
     <ClInclude Include="IFrameProcessor.h" />
-    <ClInclude Include="IFrameProcessorCtrl.h" />
     <ClInclude Include="IVideoProcessor.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="Rect.h" />

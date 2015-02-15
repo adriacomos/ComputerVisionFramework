@@ -7,7 +7,7 @@
 
 namespace cvfn {
 
-	interface class IFrameProcessorCtrl;
+	interface class IFrameProcessor;
 
 
 
@@ -22,16 +22,16 @@ namespace cvfn {
 	public:
 
 		void startVideoProcessorFromFile( System::String^ filename, bool resizeFrame, Size2D^ resizeFrameSize   );
-		void startVideoProcessorFromDevice( int device, bool resizeFrame, Size2D^ resizeFrameSize   );
+		void startVideoProcessorFromDevice( int device, Size2D^ captureSize, double frameRate, bool resizeFrame, Size2D^ resizeFrameSize   );
 
 		void stopVideoProcessor();
 
-		void setSingleFeatureTrackCtrl( ProcessorTechnology prTch,
+		void setSingleFeatureTracker( ProcessorTechnology prTch,
 										Rect^ areaTracking,
 										unsigned int minPoints,
 										bool activateSBD,
 										double thresholdSBD );
-		void getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor );
+		void getFrameProcessor( IFrameProcessor^ frameProcessor );
 
 		long getPotentialFrameRate();
 		double getAverageFrameTime();

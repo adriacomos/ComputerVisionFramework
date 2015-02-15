@@ -7,7 +7,7 @@
 
 #include "FeatureTrackerFactory.h"
 #include "SingleFeatureTrackerCtrl.h"
-#include "IFrameProcessorCtrl.h"
+
 
 #include <memory>
 #include <map>
@@ -48,18 +48,26 @@ void ComputerVisionManager::startVideoProcessorFromFile( System::String^ filenam
 }
 
 //-------------------------------------------------------------------------------------------------
-void ComputerVisionManager::startVideoProcessorFromDevice( int device, bool resizeFrame, Size2D^ resizeFrameSize   ) 
+void ComputerVisionManager::startVideoProcessorFromDevice( int device, Size2D^ captureSize, double frameRate, bool resizeFrame, Size2D^ resizeFrameSize   ) 
 {
 	cv::Size size(0,0);
 	if (resizeFrame)
 	{
 		size = cv::Size( resizeFrameSize->Width, resizeFrameSize->Height );
 	}
-	mptrcvManager->startVideoProcessorFromDevice( device, resizeFrame, size  );
+
+	cvf::ProcessorFromDeviceParams params;
+	params.Device = device;
+	params.Resize = resizeFrame;
+	params.CaptureFrameSize = cv::Size(captureSize->Width, captureSize->Height);
+	params.CaptureFrameRate = frameRate;
+	params.WorkingFrameSize = size;
+
+	mptrcvManager->startVideoProcessorFromDevice( params );
 }
 
 
-void ComputerVisionManager::setSingleFeatureTrackCtrl( ProcessorTechnology prTech,
+void ComputerVisionManager::setSingleFeatureTracker( ProcessorTechnology prTech,
 			Rect^ areaTracking,
 			unsigned int minPoints,
 			bool activateSBD,
@@ -76,14 +84,14 @@ void ComputerVisionManager::setSingleFeatureTrackCtrl( ProcessorTechnology prTec
 		pt = cvf::ProcessorTechnology::GPU; break;
 	};
 		
-	mptrcvManager->setFrameProcessorCtrl( FeatureTrackerFactory::createSingleFeatureTracker( pt,
+	mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createSingleFeatureTracker( pt,
 		area, minPoints, activateSBD, thresholdSBD ) );
 }
 
-void ComputerVisionManager::getFrameProcessorCtrl( IFrameProcessorCtrl^ frameProcessor )
+void ComputerVisionManager::getFrameProcessor( IFrameProcessor^ frameProcessor )
 {
 	if (frameProcessor != nullptr)
-		frameProcessor->setUnmanaged( mptrcvManager->getFrameProcessorCtrl() );
+		frameProcessor->setUnmanaged( mptrcvManager->getFrameProcessor() );
 }
 
 

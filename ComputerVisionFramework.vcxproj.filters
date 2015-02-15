@@ -48,9 +48,6 @@
     <ClInclude Include="VideoProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IFrameProcessorCtrl.h">
-      <Filter>FrameProcessorControllers</Filter>
-    </ClInclude>
     <ClInclude Include="SingleFeatureTrackerCtrl.h">
       <Filter>FrameProcessorControllers</Filter>
     </ClInclude>
