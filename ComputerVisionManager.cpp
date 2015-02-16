@@ -121,6 +121,12 @@ void ComputerVisionManager::setRelativeVideoProgression( double relpos )
 	mptrcvManager->setRelativeVideoProgression( relpos );
 }
 
+void ComputerVisionManager::pause( bool pause )
+{
+	mptrcvManager->pause( pause );
+}
+
+
 Dictionary< String^, String^>^ ComputerVisionManager::getDebugInfo() 
 {
 	Dictionary< String^, String^>^ ret = gcnew Dictionary< String^, String^ >();

@@ -45,7 +45,7 @@ namespace cvfn {
 
 		virtual	System::Collections::Generic::Dictionary< System::String^, System::String^>^ getDebugInfo();
 
-
+		virtual void pause( bool pause );
 
 
 
