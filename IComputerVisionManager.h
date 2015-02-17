@@ -30,7 +30,8 @@ namespace cvfn {
 										Rect^ areaTracking,
 										unsigned int minPoints,
 										bool activateSBD,
-										double thresholdSBD );
+										double thresholdSBD,
+										bool SCIM );
 		void getFrameProcessor( IFrameProcessor^ frameProcessor );
 
 		long getPotentialFrameRate();

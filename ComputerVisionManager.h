@@ -26,7 +26,7 @@ namespace cvfn {
 		virtual ~ComputerVisionManager(void);
 
 		virtual void startVideoProcessorFromFile( System::String^ filename, bool resizeFrame, Size2D^ resizeFrameSize  );
-		virtual void startVideoProcessorFromDevice( int device, Size2D^ captureSize, double frameRate, bool resizeFrame, Size2D^ resizeFrameSize   );
+		virtual void startVideoProcessorFromDevice( int device, Size2D^ captureSize, double frameRate, bool resizeFrame, Size2D^ resizeFrameSize );
 
 		virtual void stopVideoProcessor();
 
@@ -34,7 +34,8 @@ namespace cvfn {
 			Rect^ areaTracking,
 			unsigned int minPoints,
 			bool activateSBD,
-			double thresholdSBD );
+			double thresholdSBD, 
+			bool SCIM   );
 
 		virtual void getFrameProcessor( IFrameProcessor^ frameProcessor );
 

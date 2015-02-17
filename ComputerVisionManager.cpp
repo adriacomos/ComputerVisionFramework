@@ -71,7 +71,8 @@ void ComputerVisionManager::setSingleFeatureTracker( ProcessorTechnology prTech,
 			Rect^ areaTracking,
 			unsigned int minPoints,
 			bool activateSBD,
-			double thresholdSBD )
+			double thresholdSBD,
+			bool SCIM )
 {
 
 	cv::Rect area( areaTracking->X, areaTracking->Y, areaTracking->Width, areaTracking->Height );
@@ -84,8 +85,14 @@ void ComputerVisionManager::setSingleFeatureTracker( ProcessorTechnology prTech,
 		pt = cvf::ProcessorTechnology::GPU; break;
 	};
 		
-	mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createSingleFeatureTracker( pt,
-		area, minPoints, activateSBD, thresholdSBD ) );
+	if (SCIM) {
+		mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createSCIMFeatureTracker( 
+			area, minPoints, activateSBD, thresholdSBD  ) );
+	}
+	else {
+		mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createSingleFeatureTracker( 
+			pt,	area, minPoints, activateSBD, thresholdSBD  ) );
+	}
 }
 
 void ComputerVisionManager::getFrameProcessor( IFrameProcessor^ frameProcessor )
