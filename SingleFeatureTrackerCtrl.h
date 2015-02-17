@@ -26,7 +26,9 @@ public:
 	virtual void setUnmanaged( std::weak_ptr<cvf::IFrameProcessor> frm );
 
 	virtual Point2D^ getTrackingPoint();
+	virtual Point2D^ getNormalizedTrackingPoint();
 	virtual Point2D^ getSecondaryAttachedPoint();
+	virtual Point2D^ getNormalizedSecondaryAttachedPoint();
 	virtual bool	getTrackingPoint( Point2D% pt );
 	virtual bool	getSecondaryAttachedPoint( Point2D% pt );
 

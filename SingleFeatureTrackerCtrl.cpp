@@ -43,6 +43,23 @@ Point2D^ SingleFeatureTrackerCtrl::getSecondaryAttachedPoint()
 	return gcnew Point2D( pt.x, pt.y );
 }
 
+Point2D^ SingleFeatureTrackerCtrl::getNormalizedTrackingPoint() 
+{
+	std::shared_ptr<cvf::ISingleFeatureTrackerCtrl> sft = mptrUnmanaged->lock();
+	cv::Point2f pt;
+	sft->getNormalizedTrackingPoint(pt);
+	return gcnew Point2D( pt.x, pt.y );
+}
+
+Point2D^ SingleFeatureTrackerCtrl::getNormalizedSecondaryAttachedPoint()
+{
+	std::shared_ptr<cvf::ISingleFeatureTrackerCtrl> sft = mptrUnmanaged->lock();
+	cv::Point2f pt;
+	sft->getNormalizedSecondaryAttachedPoint(pt);
+	return gcnew Point2D( pt.x, pt.y );
+}
+
+
 bool	SingleFeatureTrackerCtrl::getTrackingPoint( Point2D% pt )
 {
 	std::shared_ptr<cvf::ISingleFeatureTrackerCtrl> sft = mptrUnmanaged->lock();
