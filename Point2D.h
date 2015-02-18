@@ -19,8 +19,19 @@ namespace cvfn {
 		}
 
 		virtual System::String^ ToString( System::String^ format)  {   
-			return X.ToString(format) + "," + Y.ToString(format); 
+
+			System::Globalization::CultureInfo^ culture = System::Globalization::CultureInfo::InvariantCulture;
+
+			return X.ToString(format, culture) + "," + Y.ToString(format, culture); 
 		}
+
+		virtual System::String^ ToString( System::String^ format, System::String^ separator)  {   
+
+			System::Globalization::CultureInfo^ culture = System::Globalization::CultureInfo::InvariantCulture;
+
+			return X.ToString(format, culture) + separator + Y.ToString(format, culture); 
+		}
+
 
 	};
 
