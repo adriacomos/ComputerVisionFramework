@@ -67,12 +67,12 @@ void ComputerVisionManager::startVideoProcessorFromDevice( int device, Size2D^ c
 }
 
 
+//-------------------------------------------------------------------------------------------------
 void ComputerVisionManager::setSingleFeatureTracker( ProcessorTechnology prTech,
 			Rect^ areaTracking,
 			unsigned int minPoints,
 			bool activateSBD,
-			double thresholdSBD,
-			bool SCIM )
+			double thresholdSBD)
 {
 
 	cv::Rect area( areaTracking->X, areaTracking->Y, areaTracking->Width, areaTracking->Height );
@@ -84,35 +84,46 @@ void ComputerVisionManager::setSingleFeatureTracker( ProcessorTechnology prTech,
 	case ProcessorTechnology::GPU:
 		pt = cvf::ProcessorTechnology::GPU; break;
 	};
-		
-	if (SCIM) {
-		mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createSCIMFeatureTracker( 
-			area, minPoints, activateSBD, thresholdSBD  ) );
-	}
-	else {
-		mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createSingleFeatureTracker( 
-			pt,	area, minPoints, activateSBD, thresholdSBD  ) );
-	}
+
+
+	mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createSingleFeatureTracker( 
+		pt,	area, minPoints, activateSBD, thresholdSBD  ) );
 }
 
+
+//-------------------------------------------------------------------------------------------------
+void ComputerVisionManager::setSCIMFeatureTracker( Rect^ areaTracking,
+			unsigned int minPoints,
+			bool activateSBD,
+			double thresholdSBD,
+			unsigned int maxDistanceAnchorInterFrame )
+{
+	cv::Rect area( areaTracking->X, areaTracking->Y, areaTracking->Width, areaTracking->Height );
+
+	mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createSCIMFeatureTracker( 
+					area, minPoints, activateSBD, thresholdSBD, maxDistanceAnchorInterFrame  ) );
+}
+
+//-------------------------------------------------------------------------------------------------
 void ComputerVisionManager::getFrameProcessor( IFrameProcessor^ frameProcessor )
 {
 	if (frameProcessor != nullptr)
 		frameProcessor->setUnmanaged( mptrcvManager->getFrameProcessor() );
 }
 
-
+//-------------------------------------------------------------------------------------------------
 void ComputerVisionManager::stopVideoProcessor()
 {
 	mptrcvManager->stopVideoProcessor();
 }
 
-
+//-------------------------------------------------------------------------------------------------
 long ComputerVisionManager::getPotentialFrameRate()
 {
 	return mptrcvManager->getPotentialFrameRate();
 }
 
+//-------------------------------------------------------------------------------------------------
 double ComputerVisionManager::getAverageFrameTime()
 {
 	return mptrcvManager->getAverageFrameTime();

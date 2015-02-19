@@ -30,12 +30,22 @@ namespace cvfn {
 
 		virtual void stopVideoProcessor();
 
+		// Funciones provisionales de creación de FeatureTrackers ---------------->
+		// TODO: si esta versión .NET tira adelante, habría que publicar clases equivalentes a C++ nativo en el que la creación
+		// de los FrameProcessors es externa, y en este interface simplemente se registran
 		virtual void setSingleFeatureTracker( ProcessorTechnology prTch,
-			Rect^ areaTracking,
-			unsigned int minPoints,
-			bool activateSBD,
-			double thresholdSBD, 
-			bool SCIM   );
+												Rect^ areaTracking,
+												unsigned int minPoints,
+												bool activateSBD,
+												double thresholdSBD);
+
+		virtual void setSCIMFeatureTracker( Rect^ areaTracking,
+											unsigned int minPoints,
+											bool activateSBD,
+											double thresholdSBD,
+											unsigned int maxDistanceAnchorInterFrame );
+		// <-------------------------------------------------------------------------
+
 
 		virtual void getFrameProcessor( IFrameProcessor^ frameProcessor );
 
