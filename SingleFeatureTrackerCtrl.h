@@ -7,7 +7,7 @@
 namespace cvf
 {
 	class IFrameProcessor;
-	class ISingleFeatureTrackerWSecondaryPt;
+	class ISingleFeatureTrackerCtrl;
 };
 
 namespace cvfn {
@@ -17,7 +17,7 @@ namespace cvfn {
 public ref class SingleFeatureTrackerCtrl : public IFrameProcessor
 {
 
-	std::weak_ptr<cvf::ISingleFeatureTrackerWSecondaryPt> *mptrUnmanaged;
+	std::weak_ptr<cvf::ISingleFeatureTrackerCtrl> *mptrUnmanaged;
 
 public:
 	SingleFeatureTrackerCtrl(void);

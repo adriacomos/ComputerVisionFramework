@@ -5,8 +5,9 @@
 
 #include "ComputerVisionFrameworkNative.h"
 
-
 #include "Size2D.h"
+
+#include <vcclr.h>
 
 using namespace System::Collections::Generic;
 
@@ -15,13 +16,25 @@ namespace cvfn {
 	ref class Point2D;
 	interface class IVideoProcessor;
 
+	class ListenerKeyboard;
+	class ListenerMouse;
+	class CVMListeners;
 
 
 	public ref class ComputerVisionManager : public IComputerVisionManager
 	{
+
 		cvf::IComputerVisionManager  *mptrcvManager;
+		CVMListeners *mptrCVMListeners;
 
 	public:
+
+
+
+		virtual event System::EventHandler<MouseEvtArgs^>^  OnMouseEvent;
+		virtual event System::EventHandler<KeyboardEvtArgs^>^  OnKeyboardEvent;
+
+
 		ComputerVisionManager(void);
 		virtual ~ComputerVisionManager(void);
 
@@ -58,8 +71,47 @@ namespace cvfn {
 
 		virtual void pause( bool pause );
 
-
+		void raiseMouseEvent( MouseEvtArgs^ args );
+		void raiseKeyboardEvent( KeyboardEvtArgs^ args );
 
 	};
+
+	// ----------------------------------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------------------------------
+	class ListenerKeyboard : public cvf::IListenerKeyboardEvents
+	{
+		gcroot< ComputerVisionManager^ > mCVManager;
+	public:
+		ListenerKeyboard( gcroot< ComputerVisionManager^> cvManager )
+			:mCVManager(cvManager)
+		{}
+
+		virtual void onEvent( const cvf::UserKeyboardEvtArgs &args ) override 
+		{
+			KeyboardEvtArgs^ manArgs = gcnew KeyboardEvtArgs( args.Evt, args.KbCode );
+			mCVManager->raiseKeyboardEvent( manArgs);
+		}
+	};
+
+
+
+	// ----------------------------------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------------------------------
+	class ListenerMouse : public cvf::IListenerMouseEvents
+	{
+		gcroot< ComputerVisionManager^ > mCVManager;
+	public:
+		ListenerMouse( gcroot< ComputerVisionManager^> cvManager )
+			:mCVManager(cvManager)
+		{}
+
+		virtual void onEvent( const cvf::UserMouseEvtArgs &args ) override 
+		{
+			MouseEvtArgs^ manArgs = gcnew MouseEvtArgs( args.Evt, args.X, args.Y );
+			mCVManager->raiseMouseEvent( manArgs);
+		}
+	};
+
+
 }
 

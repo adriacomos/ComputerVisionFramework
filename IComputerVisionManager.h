@@ -4,6 +4,8 @@
 #include "Point2D.h"
 #include "Rect.h"
 #include "Size2D.h"
+#include "MouseEvtArgs.h"
+#include "KeyboardEvtArgs.h"
 
 namespace cvfn {
 
@@ -19,7 +21,12 @@ namespace cvfn {
 
 	public interface class IComputerVisionManager
 	{
+
+
 	public:
+
+		event System::EventHandler<MouseEvtArgs^>^  OnMouseEvent;
+		event System::EventHandler<KeyboardEvtArgs^>^  OnKeyboardEvent;
 
 		void startVideoProcessorFromFile( System::String^ filename, bool resizeFrame, Size2D^ resizeFrameSize   );
 		void startVideoProcessorFromDevice( int device, Size2D^ captureSize, double frameRate, bool resizeFrame, Size2D^ resizeFrameSize   );

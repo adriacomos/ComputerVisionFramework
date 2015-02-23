@@ -144,11 +144,12 @@
     <ClInclude Include="ComputerVisionManager.h" />
     <ClInclude Include="IFrameProcessor.h" />
     <ClInclude Include="IVideoProcessor.h" />
+    <ClInclude Include="KeyboardEvtArgs.h" />
+    <ClInclude Include="MouseEvtArgs.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="SingleFeatureTrackerCtrl.h" />
     <ClInclude Include="Size2D.h" />
-    <ClInclude Include="SURFFeatureTracker.h" />
     <ClInclude Include="IComputerVisionManager.h" />
     <ClInclude Include="IFeatureTracker.h" />
     <ClInclude Include="resource.h" />
@@ -163,7 +164,6 @@
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="SingleFeatureTrackerCtrl.cpp" />
     <ClCompile Include="Size2D.cpp" />
-    <ClCompile Include="SURFFeatureTracker.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -9,6 +9,7 @@
 #include "SingleFeatureTrackerCtrl.h"
 
 
+
 #include <memory>
 #include <map>
 #include <string>
@@ -21,14 +22,35 @@ using namespace std;
 
 namespace cvfn {
 
+
+class CVMListeners {
+	shared_ptr<ListenerKeyboard>	mptrListenerKeyboard;
+	shared_ptr<ListenerMouse>		mptrListenerMouse;
+
+public:
+	CVMListeners( gcroot<ComputerVisionManager^> cvm )
+	{
+		mptrListenerKeyboard = make_shared<ListenerKeyboard>(cvm);
+		mptrListenerMouse = make_shared<ListenerMouse>(cvm);
+
+		UserInterfaceManager::listenKeyboard( mptrListenerKeyboard );
+		UserInterfaceManager::listenMouse( mptrListenerMouse );
+	}
+};
+
+
 ComputerVisionManager::ComputerVisionManager(void)
 {
 	mptrcvManager = new cvf::ComputerVisionManager();
+	mptrCVMListeners = new CVMListeners(this); 
+
 }
 
 
 ComputerVisionManager::~ComputerVisionManager(void)
 {
+	delete mptrcvManager;
+	delete mptrCVMListeners;
 }
 
 
@@ -162,6 +184,17 @@ Dictionary< String^, String^>^ ComputerVisionManager::getDebugInfo()
 
 	return ret;
 
+}
+
+
+void ComputerVisionManager::raiseMouseEvent( MouseEvtArgs^ args )
+{
+	OnMouseEvent( this, args );
+}
+
+void ComputerVisionManager::raiseKeyboardEvent( KeyboardEvtArgs^ args )
+{
+	OnKeyboardEvent( this, args );
 }
 
 
