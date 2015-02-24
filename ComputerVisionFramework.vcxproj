@@ -149,6 +149,7 @@
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="SingleFeatureTrackerCtrl.h" />
+    <ClInclude Include="SingleFeatureTrackerWSecondaryPt.h" />
     <ClInclude Include="Size2D.h" />
     <ClInclude Include="IComputerVisionManager.h" />
     <ClInclude Include="IFeatureTracker.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="SingleFeatureTrackerCtrl.cpp" />
+    <ClCompile Include="SingleFeatureTrackerWSecondaryPt.cpp" />
     <ClCompile Include="Size2D.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
