@@ -7,13 +7,12 @@
 
 namespace cvf
 {
-	class IFrameProcessor;
 	class ISingleFeatureTrackerWSecondaryPt;
 };
 
 namespace cvfn {
 
-ref class SingleFeatureTrackerWSecondaryPt
+public ref class SingleFeatureTrackerWSecondaryPt : public IFrameProcessor
 {
 	std::weak_ptr<cvf::ISingleFeatureTrackerWSecondaryPt> *mptrUnmanaged;
 
