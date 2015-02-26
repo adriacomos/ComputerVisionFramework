@@ -47,6 +47,12 @@ namespace cvfn {
 									bool activateSBD,
 									double thresholdSBD,
 									unsigned int maxDistanceAnchorInterFrame );
+
+		void setSCIMPathTracer( Rect^ areaTracking,
+								unsigned int minPoints,
+								bool activateSBD,
+								double thresholdSBD,
+								unsigned int maxDistanceAnchorInterFrame );
 		// <-------------------------------------------------------------------------
 
 

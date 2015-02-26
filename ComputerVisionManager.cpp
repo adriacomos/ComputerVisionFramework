@@ -6,6 +6,7 @@
 #include <msclr\marshal.h>
 
 #include "FeatureTrackerFactory.h"
+#include "GeneralFrameProcessorsFactory.h"
 #include "SingleFeatureTrackerCtrl.h"
 
 
@@ -113,6 +114,8 @@ void ComputerVisionManager::setSingleFeatureTracker( ProcessorTechnology prTech,
 }
 
 
+
+
 //-------------------------------------------------------------------------------------------------
 void ComputerVisionManager::setSCIMFeatureTracker( Rect^ areaTracking,
 			unsigned int minPoints,
@@ -125,6 +128,21 @@ void ComputerVisionManager::setSCIMFeatureTracker( Rect^ areaTracking,
 	mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createSCIMFeatureTracker( 
 					area, minPoints, activateSBD, thresholdSBD, maxDistanceAnchorInterFrame  ) );
 }
+
+
+//-------------------------------------------------------------------------------------------------
+void ComputerVisionManager::setSCIMPathTracer( Rect^ areaTracking,
+										unsigned int minPoints,
+										bool activateSBD,
+										double thresholdSBD,
+										unsigned int maxDistanceAnchorInterFrame )
+{
+	cv::Rect area( areaTracking->X, areaTracking->Y, areaTracking->Width, areaTracking->Height );
+
+	mptrcvManager->setFrameProcessor( GeneralFrameProcessorsFactory::createSCIMPathTracer( 
+					area, minPoints, activateSBD, thresholdSBD, maxDistanceAnchorInterFrame  ) );
+}
+
 
 //-------------------------------------------------------------------------------------------------
 void ComputerVisionManager::getFrameProcessor( IFrameProcessor^ frameProcessor )
