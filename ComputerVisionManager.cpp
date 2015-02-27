@@ -145,6 +145,20 @@ void ComputerVisionManager::setSCIMPathTracer( Rect^ areaTracking,
 
 
 //-------------------------------------------------------------------------------------------------
+void ComputerVisionManager::setSCIMDualFeatureTracker( Rect^ areaTracking,
+										unsigned int minPoints,
+										bool activateSBD,
+										double thresholdSBD,
+										unsigned int maxDistanceAnchorInterFrame )
+{
+	cv::Rect area( areaTracking->X, areaTracking->Y, areaTracking->Width, areaTracking->Height );
+
+	mptrcvManager->setFrameProcessor( GeneralFrameProcessorsFactory::createSCIMDualTracker( 
+					area, minPoints, activateSBD, thresholdSBD, maxDistanceAnchorInterFrame  ) );
+}
+
+
+//-------------------------------------------------------------------------------------------------
 void ComputerVisionManager::getFrameProcessor( IFrameProcessor^ frameProcessor )
 {
 	if (frameProcessor != nullptr)

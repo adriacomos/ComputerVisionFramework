@@ -53,6 +53,13 @@ namespace cvfn {
 								bool activateSBD,
 								double thresholdSBD,
 								unsigned int maxDistanceAnchorInterFrame );
+
+		void setSCIMDualFeatureTracker( Rect^ areaTracking,
+										unsigned int minPoints,
+										bool activateSBD,
+										double thresholdSBD,
+										unsigned int maxDistanceAnchorInterFrame );
+
 		// <-------------------------------------------------------------------------
 
 
