@@ -60,6 +60,9 @@ namespace cvfn {
 										double thresholdSBD,
 										unsigned int maxDistanceAnchorInterFrame );
 
+		void setCCFeatureTracker( Rect^ areaTracking,
+								unsigned int minPoints,
+								bool activateSBD );
 		// <-------------------------------------------------------------------------
 
 

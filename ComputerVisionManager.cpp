@@ -157,6 +157,18 @@ void ComputerVisionManager::setSCIMDualFeatureTracker( Rect^ areaTracking,
 					area, minPoints, activateSBD, thresholdSBD, maxDistanceAnchorInterFrame  ) );
 }
 
+//-------------------------------------------------------------------------------------------------
+void ComputerVisionManager::setCCFeatureTracker(	Rect^ areaTracking,
+											unsigned int minPoints,
+											bool activateSBD )
+{
+	cv::Rect area( areaTracking->X, areaTracking->Y, areaTracking->Width, areaTracking->Height );
+
+	mptrcvManager->setFrameProcessor( FeatureTrackerFactory::createCCFeatureTracker( 
+										area, minPoints, activateSBD  ));
+}
+
+
 
 //-------------------------------------------------------------------------------------------------
 void ComputerVisionManager::getFrameProcessor( IFrameProcessor^ frameProcessor )
