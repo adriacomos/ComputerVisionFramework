@@ -7,6 +7,9 @@
 #include "MouseEvtArgs.h"
 #include "KeyboardEvtArgs.h"
 
+#define DECKLINK
+
+
 namespace cvfn {
 
 	interface class IFrameProcessor;
@@ -30,6 +33,10 @@ namespace cvfn {
 
 		void startVideoProcessorFromFile( System::String^ filename, bool resizeFrame, Size2D^ resizeFrameSize   );
 		void startVideoProcessorFromDevice( int device, Size2D^ captureSize, double frameRate, bool resizeFrame, Size2D^ resizeFrameSize   );
+
+#ifdef DECKLINK
+		void startVideoProcessorFromDecklinkDevice(bool resizeFrame, Size2D^ resizeFrameSize);
+#endif
 
 		void stopVideoProcessor();
 

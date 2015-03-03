@@ -11,6 +11,8 @@
 
 using namespace System::Collections::Generic;
 
+
+
 namespace cvfn {
 
 	ref class Point2D;
@@ -40,6 +42,11 @@ namespace cvfn {
 
 		virtual void startVideoProcessorFromFile( System::String^ filename, bool resizeFrame, Size2D^ resizeFrameSize  );
 		virtual void startVideoProcessorFromDevice( int device, Size2D^ captureSize, double frameRate, bool resizeFrame, Size2D^ resizeFrameSize );
+
+		#ifdef DECKLINK
+			virtual void startVideoProcessorFromDecklinkDevice(bool resizeFrame, Size2D^ resizeFrameSize);
+		#endif
+
 
 		virtual void stopVideoProcessor();
 

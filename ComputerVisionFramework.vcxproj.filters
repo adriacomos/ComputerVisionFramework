@@ -45,9 +45,6 @@
     <ClInclude Include="UIAnchorOnClick.h">
       <Filter>UserInterfaces</Filter>
     </ClInclude>
-    <ClInclude Include="VideoProcessor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SingleFeatureTrackerCtrl.h">
       <Filter>FrameProcessorControllers</Filter>
     </ClInclude>
@@ -90,9 +87,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Size2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VideoProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UIAnchorOnClick.cpp">

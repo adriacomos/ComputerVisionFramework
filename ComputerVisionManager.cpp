@@ -1,7 +1,5 @@
 #include "stdafx.h"
 #include "ComputerVisionManager.h"
-#include "VideoProcessor.h"
-
 
 #include <msclr\marshal.h>
 
@@ -9,6 +7,9 @@
 #include "GeneralFrameProcessorsFactory.h"
 #include "SingleFeatureTrackerCtrl.h"
 
+#ifdef DECKLINK
+#include "DecklinkVideoProcessorFactories.h"
+#endif
 
 
 #include <memory>
@@ -16,6 +17,7 @@
 #include <string>
 
 using namespace cvf;
+
 using namespace System;
 using namespace System::Collections::Generic;
 using namespace System::Runtime::InteropServices;
@@ -88,6 +90,21 @@ void ComputerVisionManager::startVideoProcessorFromDevice( int device, Size2D^ c
 
 	mptrcvManager->startVideoProcessorFromDevice( params );
 }
+
+#ifdef DECKLINK
+	void ComputerVisionManager::startVideoProcessorFromDecklinkDevice( bool resizeFrame, Size2D^ resizeFrameSize)
+	{
+		cv::Size size(0,0);
+		if (resizeFrame)
+		{
+			size = cv::Size( resizeFrameSize->Width, resizeFrameSize->Height );
+		}
+
+		std::shared_ptr<cvf::IVideoProcessor> proc = cvf::decklink::DecklinkVideoProcessorFactories::createVideoProcessor();
+		mptrcvManager->startVideoProcessor( proc, resizeFrame, size );
+	}
+#endif
+
 
 
 //-------------------------------------------------------------------------------------------------
