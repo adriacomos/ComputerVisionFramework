@@ -44,7 +44,7 @@ namespace cvfn {
 		virtual void startVideoProcessorFromDevice( int device, Size2D^ captureSize, double frameRate, bool resizeFrame, Size2D^ resizeFrameSize );
 
 		#ifdef DECKLINK
-			virtual void startVideoProcessorFromDecklinkDevice(bool resizeFrame, Size2D^ resizeFrameSize);
+			virtual void startVideoProcessorFromDecklinkDevice( Size2D^ captureSize, bool resizeFrame, Size2D^ resizeFrameSize );
 		#endif
 
 

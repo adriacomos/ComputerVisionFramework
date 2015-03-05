@@ -92,7 +92,7 @@ void ComputerVisionManager::startVideoProcessorFromDevice( int device, Size2D^ c
 }
 
 #ifdef DECKLINK
-	void ComputerVisionManager::startVideoProcessorFromDecklinkDevice( bool resizeFrame, Size2D^ resizeFrameSize)
+	void ComputerVisionManager::startVideoProcessorFromDecklinkDevice( Size2D^ captureSize, bool resizeFrame, Size2D^ resizeFrameSize)
 	{
 		cv::Size size(0,0);
 		if (resizeFrame)
@@ -101,7 +101,15 @@ void ComputerVisionManager::startVideoProcessorFromDevice( int device, Size2D^ c
 		}
 
 		std::shared_ptr<cvf::IVideoProcessor> proc = cvf::decklink::DecklinkVideoProcessorFactories::createVideoProcessor();
-		mptrcvManager->startVideoProcessor( proc, resizeFrame, size );
+
+		cvf::ProcessorFromDeviceParams params;
+		params.Device = 0;
+		params.Resize = resizeFrame;
+		params.CaptureFrameSize = cv::Size(captureSize->Width, captureSize->Height);
+		params.CaptureFrameRate = 25;
+		params.WorkingFrameSize = size;
+
+		mptrcvManager->startVideoProcessor( proc, params );
 	}
 #endif
 
