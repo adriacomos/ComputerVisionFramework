@@ -220,6 +220,25 @@ double ComputerVisionManager::getAverageFrameTime()
 	return mptrcvManager->getAverageFrameTime();
 }
 
+//-------------------------------------------------------------------------------------------------
+double ComputerVisionManager::getAverageProcessTime()
+{
+	return mptrcvManager->getAverageProcessTime();
+}
+
+//-------------------------------------------------------------------------------------------------
+double ComputerVisionManager::getAverageGetFrameTime()
+{
+	return mptrcvManager->getAverageGetFrameTime();
+}
+
+//-------------------------------------------------------------------------------------------------
+double ComputerVisionManager::getAverageWaitingTime()
+{
+	return mptrcvManager->getAverageWaitingTime();
+}
+
+
 double ComputerVisionManager::getRelativeVideoProgression()  // sólo para reproducción desde ficheros
 {
 	return mptrcvManager->getRelativeVideoProgression();

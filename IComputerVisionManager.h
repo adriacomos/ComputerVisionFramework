@@ -77,6 +77,10 @@ namespace cvfn {
 
 		long getPotentialFrameRate();
 		double getAverageFrameTime();
+		double getAverageProcessTime();
+		double getAverageGetFrameTime();
+		double getAverageWaitingTime();
+
 		double getRelativeVideoProgression();  // sólo para reproducción desde ficheros
 		void setRelativeVideoProgression( double relpos );// sólo para reproducción desde ficheros
 
