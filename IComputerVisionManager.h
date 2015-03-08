@@ -7,8 +7,6 @@
 #include "MouseEvtArgs.h"
 #include "KeyboardEvtArgs.h"
 
-#define DECKLINK
-
 
 namespace cvfn {
 
